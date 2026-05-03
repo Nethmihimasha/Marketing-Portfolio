@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nethmi Peiris — Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0c0b09;
+            --surface: #141310;
+            --border: rgba(240, 236, 228, 0.08);
+            --border-hover: rgba(240, 236, 228, 0.18);
+            --text: #f0ece4;
+            --text-muted: #7a756d;
+            --text-faint: #3d3a34;
+            --gold: #c9a87c;
+            --gold-dim: rgba(201, 168, 124, 0.15);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Helvetica Neue', Helvetica, 'Inter', sans-serif;
+            font-size: 15px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 4rem;
+            border-bottom: 1px solid var(--border);
+            background: rgba(12, 11, 9, 0.85);
+            backdrop-filter: blur(12px);
+        }
+
+        .nav-logo {
+            font-weight: 600;
+            font-size: 18px;
+            color: var(--text);
+            letter-spacing: 0.01em;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 12px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        /* ── LAYOUT ── */
+        .page {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: calc(100vh - 8rem);
+            padding: 8rem 0 6rem;
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-label {
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .hero-name {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            color: var(--text);
+            letter-spacing: -0.03em;
+            margin-bottom: 1.25rem;
+            font-weight: 700;
+        }
+
+        .hero-name em {
+            font-style: italic;
+            color: var(--gold);
+            font-weight: 400;
+        }
+
+        .hero-desc {
+            font-size: 16px;
+            color: var(--text-muted);
+            max-width: 640px;
+            width: min(100%, 640px);
+            line-height: 1.75;
+            margin: 0 auto 2.5rem;
+            font-weight: 400;
+        }
+
+        .hero-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 20px;
+            border: 1px solid var(--border-hover);
+            color: var(--text-muted);
+            font-size: 12px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .btn-gold {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 22px;
+            background: var(--gold-dim);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-size: 12px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .btn-gold:hover {
+            background: rgba(201, 168, 124, 0.25);
+        }
+
+        /* ── SECTIONS ── */
+        section {
+            padding: 6rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 3rem;
+        }
+
+        .section-num {
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            color: var(--gold);
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--text);
+            letter-spacing: -0.02em;
+            font-weight: 700;
+        }
+
+        .section-count {
+            font-size: 11px;
+            color: var(--text-faint);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* ── PROJECT CARDS ── */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            transition: transform 0.2s, border-color 0.2s;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+        }
+
+        .card-img-wrapper {
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+            background: #1a1814;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+            background-color: #2a2a2a;
+        }
+
+        .card:hover .card-img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .card-tag {
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.85rem;
+            font-weight: 600;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            color: var(--text);
+            margin-bottom: 0.6rem;
+            line-height: 1.3;
+            font-weight: 600;
+        }
+
+        .card-desc-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .read-more-btn {
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0;
+            margin-bottom: 1.25rem;
+            text-align: left;
+            transition: color 0.2s;
+            display: inline-block;
+            align-self: flex-start;
+        }
+
+        .read-more-btn:hover {
+            color: var(--gold);
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 11px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--gold);
+            text-decoration: none;
+            transition: gap 0.2s;
+            font-weight: 600;
+            margin-top: auto;
+        }
+
+        .card-link:hover {
+            gap: 9px;
+        }
+
+        /* ── TECH PROJECT CARDS ── */
+        #tech .card-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        #tech .card-img-wrapper {
+            display: none;
+        }
+
+        #tech .card-content {
+            width: 100%;
+            padding: 1.5rem;
+        }
+
+        /* ── MODAL ── */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(12, 11, 9, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            padding: 2rem;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-content {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            width: 100%;
+            max-width: 650px;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-close:hover {
+            color: var(--text);
+            border-color: var(--gold);
+        }
+
+        .modal-img {
+            width: 100%;
+            height: 450px;
+            object-fit: contain;
+            background: #050504;
+            border-bottom: 1px solid var(--border);
+            display: none;
+            /* toggled via JS */
+        }
+
+        .modal-body {
+            padding: 2.5rem;
+        }
+
+        .modal-tag {
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .modal-title {
+            font-size: 1.75rem;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+            font-weight: 700;
+        }
+
+        .modal-desc {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            padding: 4rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-copy {
+            font-size: 11px;
+            color: var(--text-faint);
+            font-weight: 500;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-links a {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            transition: color 0.2s;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-label {
+            animation: fadeUp 0.6s ease both;
+        }
+
+        .hero-name {
+            animation: fadeUp 0.6s ease 0.1s both;
+        }
+
+        .hero-desc {
+            animation: fadeUp 0.6s ease 0.2s both;
+        }
+
+        .hero-links {
+            animation: fadeUp 0.6s ease 0.3s both;
+        }
+
+        /* ── MOBILE ── */
+        @media (max-width: 640px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .page {
+                padding: 0 1.25rem;
+            }
+
+            .hero {
+                padding: 10rem 0 5rem;
+            }
+
+            .modal-content {
+                max-height: 95vh;
+            }
+
+            .modal-body {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a class="nav-logo" href="#">Nethmi Peiris</a>
+        <ul class="nav-links">
+            <li><a href="#writing">Content Writing</a></li>
+            <li><a href="#campaigns">Campaigns</a></li>
+            <li><a href="#tech">Tech Projects</a></li>
+            <li><a href="mailto:nethmi123himasha@gmail.com">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="page">
+
+        <!-- ── HERO ── -->
+        <section class="hero">
+            <div class="hero-label">Marketing Enthusiast</div>
+            <h1 class="hero-name">Nethmi Peiris</h1>
+            <p class="hero-desc">Digital marketing practitioner focused on content strategy, audience engagement, and campaign execution.Bringing a tech-driven mindset to modern brand storytelling.</p>
+            <div class="hero-links">
+                <a href="mailto:nethmi123himasha@gmail.com" class="btn-gold">Contact Me ↗</a>
+                <a href="https://linkedin.com" target="_blank" class="btn-outline">View LinkedIn ↗</a>
+                <a href="#writing" class="btn-outline">Explore Projects ↗</a>
+            </div>
+        </section>
+
+        <!-- ── CONTENT WRITING ── -->
+        <section id="writing">
+            <div class="section-header">
+                <div>
+                    <div class="section-num">01</div>
+                    <h2 class="section-title">Content Writing</h2>
+                </div>
+                <span class="section-count">3 projects</span>
+            </div>
+
+            <div class="card-grid">
+
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <img src="/Assets/images/project-hazel-script.jpg" alt="Project Hazel Script" class="card-img"
+                            onerror="this.src='https://placehold.co/400x500/1a1a1a/c9a87c?text=project-hazel-script.png'">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-tag">Marketing Video Script</div>
+                        <div class="card-title">Project Hazel – AI Companion Robot</div>
+                        <div class="card-desc-container">
+                            <div class="card-desc">
+                                <b>Overview:</b> Developed a marketing video script for Hazel, an AI-powered companion
+                                robot designed to improve productivity, focus, and well-being for students and young
+                                professionals.<br><br>
+                                <b>Objective:</b> To create an engaging and emotionally compelling script that clearly
+                                communicates Hazel’s features while building a strong human connection with the
+                                audience.<br><br>
+                                <b>Concept &amp; Strategy:</b> The concept focuses on positioning Hazel as more than a
+                                device a personal companion. The narrative highlights real-life student struggles such
+                                as distraction, lack of focus, and burnout, and presents Hazel as a solution through
+                                storytelling.<br><br>
+                                <b>Key Elements:</b> Strong hook to capture attention within the first few seconds,
+                                problem-solution storytelling structure, feature integration (focus tracking, reminders,
+                                music control), conversational and relatable tone.<br><br>
+                                <b>Outcome:</b> A structured, ready-to-produce video script designed to increase
+                                audience engagement and clearly communicate product value.
+                            </div>
+                            <button class="read-more-btn">Read more</button>
+                        </div>
+                        <a href="https://www.instagram.com/reel/DWK_xGTPCY2/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="card-link">View on Instagram ↗</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <img src="/Assets/images/raster-mothers-day.jpeg" alt="Mother's Day Campaign" class="card-img"
+                            onerror="this.src='https://placehold.co/400x500/1a1a1a/c9a87c?text=raster-mothers-day.png'">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-tag">Engagement Campaign</div>
+                        <div class="card-title">Mother’s Day Campaign – Raster Media</div>
+                        <div class="card-desc-container">
+                            <div class="card-desc">
+                                <b>Overview:</b> Created a social media campaign concept aimed at increasing customer
+                                engagement and driving studio bookings during the Mother’s Day period.<br><br>
+                                <b>Objective:</b> To boost brand visibility and generate leads by combining emotional
+                                storytelling with a promotional offer.<br><br>
+                                <b>Concept &amp; Strategy:</b> The campaign encourages users to share photos with their
+                                mothers, tapping into emotional connection and user-generated content. Incentives such
+                                as a free photoshoot or 50% discount were used to drive participation and
+                                conversions.<br><br>
+                                <b>Key Elements:</b> Emotion-driven campaign (family, appreciation, memories),
+                                user-generated content strategy, clear call-to-action (share &amp; win), offer-based
+                                conversion trigger.<br><br>
+                                <b>Target Audience:</b> Young adults and families active on social media in Sri
+                                Lanka.<br><br>
+                                <b>Outcome:</b> A campaign designed to increase engagement, expand reach organically,
+                                and convert participants into paying customers.
+                            </div>
+                            <button class="read-more-btn">Read more</button>
+                        </div>
+                        <a href="https://www.instagram.com/reel/DX0IfH5iJuU/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="card-link">View on Instagram ↗</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <img src="/Assets/images/raster-studio-booking.jpg" alt="Studio Booking Sales" class="card-img"
+                            onerror="this.src='https://placehold.co/400x500/1a1a1a/c9a87c?text=raster-studio-booking.png'">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-tag">Sales Content</div>
+                        <div class="card-title">Studio Booking – Raster Media</div>
+                        <div class="card-desc-container">
+                            <div class="card-desc">
+                                <b>Overview:</b> Developed a Sinhala-language promotional content piece to attract local
+                                Sri Lankan customers and increase studio bookings.<br><br>
+                                <b>Objective:</b> To create culturally relevant and attention-grabbing content that
+                                resonates with a local audience and drives direct inquiries.<br><br>
+                                <b>Concept &amp; Strategy:</b> The content uses a conversational Sinhala tone combined
+                                with persuasive messaging to connect with everyday users. The focus was on relatability,
+                                urgency, and clear value communication.<br><br>
+                                <b>Key Elements:</b> Native Sinhala copywriting for stronger audience connection, simple
+                                and direct messaging style, emphasis on benefits (affordable, professional quality),
+                                strong call-to-action to encourage immediate booking.<br><br>
+                                <b>Target Audience:</b> Local Sri Lankan individuals, small businesses, and content
+                                creators.<br><br>
+                                <b>Outcome:</b> A localized sales content piece optimized to increase engagement and
+                                conversion among Sinhala-speaking audiences.
+                            </div>
+                            <button class="read-more-btn">Read more</button>
+                        </div>
+                        <a href="https://www.instagram.com/reel/DWTFw-DDwxF/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="card-link">View on Instagram ↗</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ── CAMPAIGNS ── -->
+        <section id="campaigns">
+            <div class="section-header">
+                <div>
+                    <div class="section-num">02</div>
+                    <h2 class="section-title">Campaigns</h2>
+                </div>
+                <span class="section-count">6 projects</span>
+            </div>
+
+            <div class="card-grid">
+
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <img src="/Assets/images/martex-rebranding.jpg" alt="Martex Rebranding Campaign" class="card-img"
+                            onerror="this.src='https://placehold.co/400x500/1a1a1a/c9a87c?text=martex-rebranding.png'">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-tag">Project Management</div>
+                        <div class="card-title">Martex Rebranding</div>
+                        <div class="card-desc-container">
+                            <div class="card-desc">
+                                <b>Role:</b> Project Manager<br><br>
+                                <b>Overview:</b> Led the end-to-end rebranding campaign for Martex, including visual
+                                identity development and website planning, aligning the brand with a more modern and
+                                competitive market position.<br><br>
+                                <b>Objective:</b> To refresh the brand image and create a cohesive digital presence that
+                                improves brand perception and customer engagement.<br><br>
+                                <b>Concept &amp; Strategy:</b> The rebranding focused on a clean, modern visual
+                                direction combined with a structured website experience. The goal was consistency across
+                                all touchpoints—from visuals to messaging.<br><br>
+                                <b>Key Responsibilities:</b> Managing the full project lifecycle, coordinating design
+                                and development teams, ensuring brand consistency, and overseeing timelines and final
+                                execution.<br><br>
+                                <b>Outcome:</b> Successfully delivered a complete rebranding direction and website
+                                experience, strengthening the brand’s visual identity and online presence.
+                            </div>
+                            <button class="read-more-btn">Read more</button>
+                        </div>
+                        <a href="https://linkedin.com/" target="_blank" class="card-link">View on LinkedIn ↗</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <img src="/Assets/images/christmas-winter-campaign.jpg" alt="Christmas Winter Campaign"
+                            class="card-img"
+                            onerror="this.src='https://placehold.co/400x500/1a1a1a/c9a87c?text=christmas-winter-campaign.png'">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-tag">Art Direction</div>
+                        <div class="card-title">Christmas Winter Campaign</div>
+                        <div class="card-desc-container">
+                            <div class="card-desc">
+                                <b>Role:</b> Art Director<br><br>
+                                <b>Overview:</b> Directed a festive-themed photo and video campaign to promote winter
+                                jackets during the Christmas season.<br><br>
+                                <b>Objective:</b> To create visually appealing content that aligns with the holiday mood
+                                while driving product interest and seasonal sales.<br><br>
+                                <b>Concept &amp; Strategy:</b> Blended Christmas aesthetics (warm tones, festive mood,
+                                storytelling) with product-focused visuals to make winter wear feel both stylish and
+                                emotionally appealing.<br><br>
+                                <b>Key Elements:</b> Festive storytelling through visuals, product-focused styling and
+                                composition, cohesive color palette and mood direction, photo + video content for
+                                multi-platform use.<br><br>
+                                <b>Outcome:</b> Delivered a seasonal campaign designed to boost engagement and increase
+                                purchase intent during the holiday period.
+                            </div>
+                            <button class="read-more-btn">Read more</button>
+                        </div>
+                        <a href="https://www.instagram.com/reel/DSKTBplCTXv/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="card-link">View on Instagram ↗</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <img src="/Assets/images/80s-retro-campaign.jpeg" alt="80s Retro Campaign" class="card-img"
+                            onerror="this.src='https://placehold.co/400x500/1a1a1a/c9a87c?text=80s-retro-campaign.png'">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-tag">Art Direction</div>
+                        <div class="card-title">80s Retro Campaign</div>
+                        <div class="card-desc-container">
+                            <div class="card-desc">
+                                <b>Role:</b> Art Director<br><br>
+                                <b>Overview:</b> Conceptualized and directed a retro-themed campaign inspired by the
+                                1980s aesthetic, targeting a youthful and trend-driven audience.<br><br>
+                                <b>Objective:</b> To differentiate the brand by using a bold, nostalgic concept that
+                                stands out on social media.<br><br>
+                                <b>Concept &amp; Strategy:</b> Inspired by pop culture references similar to Stranger
+                                Things, the campaign used neon lighting, retro styling, and cinematic framing to create
+                                a distinctive visual identity.<br><br>
+                                <b>Key Elements:</b> 80s-inspired color grading and lighting, stylized wardrobe and set
+                                design, cinematic storytelling approach, strong visual identity for social
+                                media.<br><br>
+                                <b>Outcome:</b> A unique, scroll-stopping campaign that enhanced brand creativity and
+                                attracted attention from a younger audience.
+                            </div>
+                            <button class="read-more-btn">Read more</button>
+                        </div>
+                        <a href="https://www.instagram.com/reel/DTuLli0k-CH/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="card-link">View on Instagram ↗</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <img src="/Assets/images/vintage-luxury-campaign.jpg" alt="Vintage Luxury Fashion Campaign"
+                            class="card-img"
+                            onerror="this.src='https://placehold.co/400x500/1a1a1a/c9a87c?text=vintage-luxury-campaign.png'">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-tag">Project Coordination</div>
+                        <div class="card-title">Vintage Luxury Campaign</div>
+                        <div class="card-desc-container">
+                            <div class="card-desc">
+                                <b>Role:</b> Project Coordinator &amp; Art Director<br><br>
+                                <b>Overview:</b> Led and directed a high-end fashion campaign combining vintage
+                                aesthetics with a luxury visual style.<br><br>
+                                <b>Objective:</b> To position the winter collection as premium and elegant, appealing to
+                                a more sophisticated audience.<br><br>
+                                <b>Concept &amp; Strategy:</b> Focused on timeless elegance using muted tones, classic
+                                compositions, and refined styling to create a luxury feel.<br><br>
+                                <b>Key Elements:</b> Vintage-inspired art direction, elegant minimal compositions,
+                                high-end fashion storytelling, photo and video integration.<br><br>
+                                <b>Outcome:</b> A visually refined campaign that elevated brand perception and
+                                positioned the collection in a premium segment.
+                            </div>
+                            <button class="read-more-btn">Read more</button>
+                        </div>
+                        <a href="https://www.instagram.com/reel/DOxiJKdDO98/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="card-link">View on Instagram ↗</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <img src="/Assets/images/villa-jay-resort.jpeg" alt="Villa Jay Resort" class="card-img"
+                            onerror="this.src='https://placehold.co/400x500/1a1a1a/c9a87c?text=villa-jay-resort.png'">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-tag">Content Strategy</div>
+                        <div class="card-title">Villa Jay Resort</div>
+                        <div class="card-desc-container">
+                            <div class="card-desc">
+                                <b>Role:</b> Content Planner &amp; Booking Coordinator<br><br>
+                                <b>Overview:</b> Managed content planning and online booking operations to increase
+                                awareness and improve customer experience for Villa Jay.<br><br>
+                                <b>Objective:</b> To attract more visitors through engaging content while streamlining
+                                booking processes and improving customer satisfaction.<br><br>
+                                <b>Concept &amp; Strategy:</b> Focused on showcasing the villa experience through
+                                visually engaging content while optimizing booking platforms for better
+                                conversion.<br><br>
+                                <b>Key Responsibilities:</b> Planning engaging social media content, managing
+                                Booking.com listings, handling customer inquiries and reservations, ensuring smooth
+                                customer journey.<br><br>
+                                <b>Outcome:</b> Improved online visibility, enhanced customer engagement, and
+                                contributed to a smoother booking experience.
+                            </div>
+                            <button class="read-more-btn">Read more</button>
+                        </div>
+                        <a href="https://www.instagram.com/villa_jay_/" target="_blank" class="card-link">View on Instagram ↗</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <img src="/Assets/images/tourify-app-intro.jpg" alt="Tourify App Intro" class="card-img"
+                            onerror="this.src='https://placehold.co/400x500/1a1a1a/c9a87c?text=tourify-app-intro.png'">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-tag">Content & Production Support</div>
+                        <div class="card-title">Tourify – Podcast-Style Intro Campaign</div>
+                        <div class="card-desc-container">
+                            <div class="card-desc">
+                                <b>Project Title:</b> Tourify – Podcast-Style Intro Campaign<br><br>
+                                <b>Role:</b> Assistant (Content & Production Support)<br><br>
+                                <b>Overview:</b> Contributed to the creation of an intro video campaign for a travel app designed to help foreign tourists plan their trips in Sri Lanka.<br><br>
+                                <b>Objective:</b> To introduce the app in an engaging and informative way, highlighting its value to international travelers.<br><br>
+                                <b>Concept &amp; Strategy:</b> A podcast-style storytelling approach was used to create a relaxed, informative, and immersive introduction to the app experience.<br><br>
+                                <b>Key Elements:</b><br>
+                                Conversational tone targeting foreign travelers<br>
+                                Focus on Sri Lanka as a destination<br>
+                                Highlighting ease of trip planning<br>
+                                Audio-driven storytelling format<br><br>
+                                <b>Outcome:</b> An engaging intro content piece designed to build awareness and spark interest among potential users.
+                            </div>
+                            <button class="read-more-btn">Read more</button>
+                        </div>
+                        <a href="https://www.instagram.com/reel/DW_bHZZkzDu/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="card-link">View on Instagram ↗</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ── TECH PROJECTS ── -->
+        <section id="tech">
+            <div class="section-header">
+                <div>
+                    <div class="section-num">03</div>
+                    <h2 class="section-title">Tech Projects</h2>
+                </div>
+                <span class="section-count">3 projects</span>
+            </div>
+
+            <div class="card-grid">
+
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <img src="Assets/images/project-hazel-app.png" alt="Project Hazel" class="card-img"
+                            onerror="this.src='https://placehold.co/400x500/1a1a1a/c9a87c?text=project-hazel-app.png'">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-tag">AI Development</div>
+                        <div class="card-title">Project Hazel – AI Companion Robot</div>
+                        <div class="card-desc-container">
+                            <div class="card-desc">
+                                <b>Role:</b> Project Manager | AI Developer | UI/UX Designer<br><br>
+                                <b>Overview:</b> Led the development of an AI-powered companion robot, combining product strategy, user experience design, and technical implementation.<br><br>
+                                <b>Objective:</b> To build a smart companion that enhances productivity and daily assistance while ensuring a user-friendly and engaging experience.<br><br>
+                                <b>Marketing Angle (This is key):</b> Focused on how users interact emotionally with the product, ensuring the interface and features align with real user needs—bridging the gap between technology and user engagement.<br><br>
+                                <b>Key Contributions:</b><br>
+                                Managed end-to-end development lifecycle<br>
+                                Designed intuitive UI/UX for better user interaction<br>
+                                Contributed to AI functionality and logic<br>
+                                Aligned product features with user behavior and expectations<br><br>
+                                <b>Outcome:</b> A fully developed concept with a functional interface, ready to be positioned and marketed as a lifestyle-enhancing tech product.
+                            </div>
+                            <button class="read-more-btn">Read more</button>
+                        </div>
+                        <a href="https://companionhazel.com/" target="_blank" class="card-link">View Website ↗</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <img src="Assets/images/raster-website.png" alt="Raster Website" class="card-img"
+                            onerror="this.src='https://placehold.co/400x500/1a1a1a/c9a87c?text=raster-website.png'">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-tag">Web Development</div>
+                        <div class="card-title">Raster Media Website</div>
+                        <div class="card-desc-container">
+                            <div class="card-desc">
+                                <b>Role:</b> Web Developer<br><br>
+                                <b>Overview:</b> Developed a responsive landing page for an advertising agency to strengthen its online presence and showcase services effectively.<br><br>
+                                <b>Objective:</b> To create a clean, modern website that communicates brand identity and converts visitors into potential clients.<br><br>
+                                <b>Marketing Angle:</b> Designed the site with a focus on conversion and user journey, ensuring visitors quickly understand services and take action.<br><br>
+                                <b>Key Contributions:</b><br>
+                                Built responsive front-end layout<br>
+                                Structured content for clarity and engagement<br>
+                                Designed sections to highlight services and portfolio<br>
+                                Optimized user flow for lead generation<br><br>
+                                <b>Outcome:</b> A functional and visually aligned website that supports brand credibility and client acquisition.
+                            </div>
+                            <button class="read-more-btn">Read more</button>
+                        </div>
+                        <a href="https://www.rastermedia.lk/" target="_blank" class="card-link">View Website ↗</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <img src="Assets/images/azure-ai-integration.png" alt="Hive Lanka Platform" class="card-img"
+                            onerror="this.src='https://placehold.co/400x500/1a1a1a/c9a87c?text=azure-ai-integration.png'">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-tag">Front-End Development</div>
+                        <div class="card-title">Hive Lanka Platform – E-commerce</div>
+                        <div class="card-desc-container">
+                            <div class="card-desc">
+                                <b>Role:</b> Front-End Developer<br><br>
+                                <b>Overview:</b> Worked on an e-commerce platform aimed at empowering local small and medium-scale business owners in Sri Lanka.<br><br>
+                                <b>Objective:</b> To create a user-friendly digital marketplace that supports local entrepreneurs and improves product visibility.<br><br>
+                                <b>Marketing Angle:</b> Focused on customer experience and accessibility, ensuring the platform encourages browsing, trust, and purchase behavior.<br><br>
+                                <b>Key Contributions:</b><br>
+                                Developed front-end UI for product display and navigation<br>
+                                Ensured responsive and accessible design<br>
+                                Improved user experience for both sellers and buyers<br>
+                                Supported digital presence for local businesses<br><br>
+                                <b>Outcome:</b> A scalable platform concept that enhances online selling opportunities for SMEs while improving customer engagement.
+                            </div>
+                            <button class="read-more-btn">Read more</button>
+                        </div>
+                        <a href="https://linkedin.com/" target="_blank" class="card-link">View Website ↗</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ── FOOTER ── -->
+        <footer>
+            <span class="footer-copy">© 2026 Nethmi Peiris</span>
+            <div class="footer-links">
+                <a href="mailto:nethmi123himasha@gmail.com">Email</a>
+                <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+                <a href="https://github.com" target="_blank">GitHub</a>
+                <a href="tel:+94766082477">+94 766 082 477</a>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- ── MODAL COMPONENT ── -->
+    <div class="modal-overlay" id="projectModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">&times;</button>
+            <img src="" alt="Project Image" class="modal-img" id="modalImg">
+            <div class="modal-body">
+                <div class="modal-tag" id="modalTag">Tag</div>
+                <h3 class="modal-title" id="modalTitle">Title</h3>
+                <div class="modal-desc" id="modalDesc">Description goes here...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const readMoreBtns = document.querySelectorAll(".read-more-btn");
+            const modalOverlay = document.getElementById("projectModal");
+            const closeModalBtn = document.getElementById("closeModal");
+
+            const modalImg = document.getElementById("modalImg");
+            const modalTag = document.getElementById("modalTag");
+            const modalTitle = document.getElementById("modalTitle");
+            const modalDesc = document.getElementById("modalDesc");
+
+            readMoreBtns.forEach(btn => {
+                const descContainer = btn.previousElementSibling;
+                const fullTextHTML = descContainer.innerHTML;
+
+                const card = btn.closest(".card");
+                const title = card.querySelector(".card-title").textContent;
+                const tag = card.querySelector(".card-tag").textContent;
+                const img = card.querySelector(".card-img");
+
+                // Hide "Read more" if the content is small enough that it doesn't need truncating
+                if (descContainer.scrollHeight <= descContainer.clientHeight) {
+                    btn.style.display = "none";
+                }
+
+                btn.addEventListener("click", () => {
+                    // Populate Modal with card data
+                    modalTitle.textContent = title;
+                    modalTag.textContent = tag;
+                    modalDesc.innerHTML = fullTextHTML;
+
+                    if (img) {
+                        modalImg.src = img.src;
+                        modalImg.style.display = "block";
+
+                        // Handle fallback for modal image if the main image fails
+                        if (img.hasAttribute("onerror")) {
+                            modalImg.setAttribute("onerror", img.getAttribute("onerror"));
+                        }
+                    } else {
+                        modalImg.style.display = "none";
+                    }
+
+                    // Show Modal
+                    modalOverlay.classList.add("active");
+                    document.body.style.overflow = "hidden"; // Prevent scrolling behind modal
+                });
+            });
+
+            // Modal Close Logic
+            const closeModal = () => {
+                modalOverlay.classList.remove("active");
+                document.body.style.overflow = "auto"; // Restore scrolling
+            };
+
+            closeModalBtn.addEventListener("click", closeModal);
+
+            modalOverlay.addEventListener("click", (e) => {
+                // Close if clicking outside the modal content
+                if (e.target === modalOverlay) {
+                    closeModal();
+                }
+            });
+
+            // Re-check text truncation on window resize
+            window.addEventListener('resize', () => {
+                readMoreBtns.forEach(btn => {
+                    const descContainer = btn.previousElementSibling;
+                    if (descContainer.scrollHeight > descContainer.clientHeight) {
+                        btn.style.display = "inline-block";
+                    } else {
+                        btn.style.display = "none";
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
